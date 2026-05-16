@@ -1,0 +1,178 @@
+import { motion } from 'framer-motion'
+import { Clock, Check, Scissors } from 'lucide-react'
+import SectionHeader from '../components/SectionHeader'
+
+const BeardStyling = () => {
+  const services = [
+    {
+      name: 'Beard Trim',
+      price: '₹199',
+      duration: '15 mins',
+      description: 'Professional beard trimming for a neat look.',
+      features: ['Beard Trim', 'Shape Up', 'Line Up']
+    },
+    {
+      name: 'Beard Shape & Style',
+      price: '₹299',
+      duration: '25 mins',
+      description: 'Expert beard shaping for your face shape.',
+      features: ['Consultation', 'Beard Trim', 'Shape Design', 'Styling']
+    },
+    {
+      name: 'Full Beard Grooming',
+      price: '₹399',
+      duration: '40 mins',
+      description: 'Complete beard grooming with hot towel.',
+      features: ['Beard Trim', 'Hot Towel', 'Beard Mask', 'Beard Oil', 'Styling']
+    },
+    {
+      name: 'Beard Coloring',
+      price: '₹599',
+      duration: '45 mins',
+      description: 'Professional beard coloring services.',
+      features: ['Color Consultation', 'Application', 'Treatment']
+    },
+    {
+      name: 'Beard Treatment',
+      price: '₹499',
+      duration: '30 mins',
+      description: 'Deep conditioning treatment for beard.',
+      features: ['Beard Wash', 'Treatment Mask', 'Beard Oil']
+    },
+    {
+      name: 'Hot Towel Shave',
+      price: '₹299',
+      duration: '30 mins',
+      description: 'Traditional hot towel shave experience.',
+      features: ['Hot Towel', 'Pre-shave Oil', 'Shave', 'Aftershave']
+    },
+  ]
+
+  const beardStyles = [
+    { name: 'Full Beard', description: 'Classic full beard look' },
+    { name: 'Goatee', description: 'Styled goatee beard' },
+    { name: 'Stubble', description: 'Clean stubble look' },
+    { name: 'Van Dyke', description: 'Classic Van Dyke style' },
+    { name: 'Circle Beard', description: 'Rounded circle beard' },
+    { name: 'Balbo', description: 'Modern Balbo style' },
+  ]
+
+  return (
+    <div className="min-h-screen pt-24">
+      {/* Hero Section */}
+      <section className="py-24 relative overflow-hidden hero-pattern">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h1 className="text-5xl md:text-6xl font-display font-bold text-white mb-6">
+                Expert <span className="text-gradient-gold">Beard Styling</span>
+              </h1>
+              <p className="text-xl text-gray-400 leading-relaxed mb-8">
+                Master the art of beard grooming with our expert barbers. From classic styles to modern trends, we create the perfect beard for you.
+              </p>
+              <div className="flex items-center space-x-4">
+                <a
+                  href="tel:9619134803"
+                  className="px-8 py-4 bg-gradient-gold text-[#0a0a0a] rounded-full font-semibold hover:scale-105 transition-transform gold-glow"
+                >
+                  Book Now
+                </a>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <div className="aspect-square rounded-3xl overflow-hidden glass-card gold-glow">
+                <img
+                  src="/images/beard-styling.jpg"
+                  alt="Beard Styling"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services List */}
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            subtitle="Our Services"
+            title="Beard Grooming Menu"
+            description="Professional beard services for every style."
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
+            {services.map((service, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.05 }}
+                className="glass-card rounded-2xl p-6 hover:border-[#D4AF37]/50 transition-all"
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <h3 className="text-xl font-semibold text-white">{service.name}</h3>
+                  <div className="flex items-center text-gray-400 text-sm">
+                    <Clock className="w-4 h-4 mr-1" />
+                    {service.duration}
+                  </div>
+                </div>
+                <p className="text-gray-400 text-sm mb-4">{service.description}</p>
+                <div className="space-y-2 mb-4">
+                  {service.features.map((feature, i) => (
+                    <div key={i} className="flex items-center text-sm text-gray-300">
+                      <Check className="w-4 h-4 text-[#D4AF37] mr-2" />
+                      {feature}
+                    </div>
+                  ))}
+                </div>
+                <div className="pt-4 border-t border-[#D4AF37]/20">
+                  <p className="text-2xl font-bold text-gradient-gold">{service.price}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Beard Styles */}
+      <section className="py-24 bg-gradient-to-b from-[#0a0a0a] to-[#1a1a1a]/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            subtitle="Popular Styles"
+            title="Beard Styles We Offer"
+            description="Choose from our popular beard styles or create your own."
+          />
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mt-16">
+            {beardStyles.map((style, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.05 }}
+                className="glass-card rounded-2xl p-6 text-center hover:border-[#D4AF37]/50 transition-all"
+              >
+                <Scissors className="w-8 h-8 text-[#D4AF37] mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-white mb-2">{style.name}</h3>
+                <p className="text-gray-400 text-sm">{style.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  )
+}
+
+export default BeardStyling
